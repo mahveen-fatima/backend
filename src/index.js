@@ -1,7 +1,8 @@
-// require('dotenv').config({path: './env'})
+// require('dotenv').config({path: './env'}) config method is taking an object
 import dotenv from "dotenv"
 import connectDB from "./db/index.js";
 
+// improved version with import
 dotenv.config({
     path: "./env"
 })
@@ -9,9 +10,11 @@ dotenv.config({
 
 connectDB()
 
-// import mongoose from "mongoose";
-// import { DB_NAME } from "./constants"
 // first approach of connecting to database
+
+// import mongoose from "mongoose";
+// import { DB_NAME } from "./constants.js"
+
 /*
 import express from "express"
 const app = express()
