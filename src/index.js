@@ -19,12 +19,13 @@ const app = express()
 ( async () => {
     try {
         await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
-        // when it cannot talk with database
+        // when application cannot talk to database thats why writing a listener
         app.on("error", (error) => {
             console.log("ERROR: ", error);
             throw error
         })
 
+        // when app is listening
         app.listen(process.env.PORT, () => {
             console.log(`App is listening on port ${process.env.PORT}`);
         })
