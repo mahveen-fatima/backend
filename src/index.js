@@ -9,6 +9,7 @@ dotenv.config({
 })
 
 
+// asynchronous method returns a promise 
 connectDB()
 .then(() => {
     app.listen(process.env.PORT || 8000, () => {
