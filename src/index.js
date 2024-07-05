@@ -11,15 +11,16 @@ dotenv.config({
 
 // asynchronous method returns a promise 
 connectDB()
-.then(() => {
-    app.listen(process.env.PORT || 8000, () => {
-        console.log(` Server is running at port: ${process.env.PORT}`);
-    })
-})
 .catch(() => {
     app.on("error", (error) => {
         console.log("ERROR:", error);
         throw error;
+    })
+})
+
+.then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+        console.log(` Server is running at port: ${process.env.PORT}`);
     })
 })
 
