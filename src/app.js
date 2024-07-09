@@ -26,4 +26,9 @@ app.use(cookieParser())
 // to access and set the cookies to the browser of user
 // server can read and remove the cookie
 
+
+// routes import
+
+import userRouter from "./routes/user.routes.js"
+
 export { app }
