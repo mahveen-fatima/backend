@@ -1,4 +1,5 @@
 // require('dotenv').config({path: './env'}) config method is taking an object
+// it can be run but using import form
 import dotenv from "dotenv"
 import connectDB from "./db/index.js";
 import { app } from "./app.js";
@@ -51,7 +52,7 @@ const app = express()
 ( async () => {
     try {
         await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
-        // when application cannot talk to database thats why writing a listener
+        // when application cannot able to talk to database thats why writing a app.on
         app.on("error", (error) => {
             console.log("ERROR: ", error);
             throw error
