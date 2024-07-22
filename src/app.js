@@ -5,19 +5,22 @@ import cookieParser from "cookie-parser"
 const app = express()
 
 // it configures after importing express( after making app )
-// 1. configure cors by using ( use ) it is used for configuring and set the middlewares.
+// 1. configure cors by using ( use ) it is used for configuring and to set the middlewares.
+// in production level cors method have options like origin & credientials
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true 
 }))
 
-// 2. settings for getting data and configuring it with express
+// THREE MAJOR CONFIGURATIONs:
+// 2. settings for getting data from everywhere so configuring it with express
+// configuirng json with express and passing option but in earlier json uses body parser
 app.use(express.json({limit: "16kb"}))
-// getting the data after filling the form
+// telling express how to take the data ( of json format ) after filling the form
 
 app.use(express.urlencoded({extended: true, limit: "16kb"}))
-// getting the data from url
+// how take the data from url like ( %20 gets inside the space ) so it will understand after that
 
 app.use(express.static("public"))
 // for storing pdfs, files, folders, images in folder public can access anyone

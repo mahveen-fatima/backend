@@ -43,6 +43,8 @@ const videoSchema = new Schema(
     }
 );
 
+
+// aggregation pipeline
 videoSchema.plugin(mongooseAggregatePaginate)
 
 

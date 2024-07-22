@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
 
 // purely connecting database without app
+// it is a asynchronous method
 const connectDB = async () => {
     try {
         // holding the connection response in variable
