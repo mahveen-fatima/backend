@@ -7,4 +7,5 @@ class ApiResponse {
     }
 }
 
+export { ApiResponse }
 // response utility with status code
