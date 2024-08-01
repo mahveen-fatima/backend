@@ -167,13 +167,13 @@ const logoutUser = asyncHandler(async(req, res) => {
     await User.findByIdAndUpdate(
         req.user._id,
         {
-            $set: {
-                refreshToken: undefined
+            $unset: {
+                refreshToken: 1 // this removes the field from document
             }
         },
         {
             new: true
-        }
+        }  
     )
 
     const options = {
@@ -438,7 +438,7 @@ const getUserChannelProfile = asyncHandler(async(req, res) => {
 })
 
 
-const getWatchHistory = asyncHandler(async(req, res)=> {
+const getWatchHistory = asyncHandler(async(req, res) => {
     const user = await User.aggregate([
         {
             $match: {
@@ -470,8 +470,8 @@ const getWatchHistory = asyncHandler(async(req, res)=> {
                         }
                     },
                     {
-                        $addFields: {
-                            owner: {
+                        $addFields:{
+                            owner:{
                                 $first: "$owner"
                             }
                         }
@@ -486,11 +486,12 @@ const getWatchHistory = asyncHandler(async(req, res)=> {
     .json(
         new ApiResponse(
             200,
-            user[0].watchHitory,
+            user[0].watchHistory,
             "Watch history fetched successfully"
         )
     )
 })
+
 
 
 export { 
